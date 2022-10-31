@@ -39,6 +39,7 @@ commands:
 jobs:
   filter:
     executor: path-filtering/default
+    resource_class: small
     steps:
       - checkout
       - path-filtering/set-parameters:
@@ -48,6 +49,7 @@ jobs:
           # - Each line can only have 3 items, separated by space
           # - No item in each line can have space in their value
           mapping: |
+            .* config ".circleci/no-op.yml"
             foo/.* config ".circleci/continue-foo.yml"
             foo/.* message "kungFOOfighting"
             bar/.* config ".circleci/continue-bar.yml"
