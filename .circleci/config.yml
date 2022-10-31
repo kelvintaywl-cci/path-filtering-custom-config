@@ -43,11 +43,15 @@ jobs:
       - checkout
       - path-filtering/set-parameters:
           base-revision: main
+          # NOTE: path-filtering mapping is basic and can be limiting.
+          # - No comments allowed
+          # - Each line can only have 3 items, separated by space
+          # - No item in each line can have space in their value
           mapping: |
             foo/.* config ".circleci/continue-foo.yml"
-            foo/.* message "this is FOO"
+            foo/.* message "kungFOOfighting"
             bar/.* config ".circleci/continue-bar.yml"
-            bar/.* message "BAR none"
+            bar/.* message "BARnone"
       - set-continued-config:
           lookup-key: config
       - continuation/continue:
