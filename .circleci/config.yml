@@ -39,8 +39,8 @@ jobs:
       - path-filtering/set-parameters:
           base-revision: main
           mapping: |
-            foo/.* config .circleci/continue-foo.yml
-            bar/.* config .circleci/continue-foo.yml
+            foo/.* config ".circleci/continue-foo.yml"
+            bar/.* config ".circleci/continue-bar.yml"
       - set-continued-config:
           lookup-key: config
       - continuation/continue:
