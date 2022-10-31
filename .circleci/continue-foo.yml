@@ -1,0 +1,14 @@
+version: 2.1
+
+jobs:
+  foo:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run: echo FOO
+
+workflows:
+  for-foo:
+    jobs:
+      - foo
