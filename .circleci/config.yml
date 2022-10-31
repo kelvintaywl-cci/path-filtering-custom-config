@@ -22,7 +22,7 @@ commands:
       - run:
           name: Set next config as << parameters.configuration-path >>
           command: |
-            ln -s << parameters.configuration-path >> $(jq -r '.<< parameters.lookup-key >>' << parameters.pipeline-parameters-json-file >>)
+            ln -s $(jq -r '.<< parameters.lookup-key >>' << parameters.pipeline-parameters-json-file >>) << parameters.configuration-path >>
       - run:
           name: Pop << parameters.lookup-key >> key from << parameters.pipeline-parameters-json-file >>
           command: |
