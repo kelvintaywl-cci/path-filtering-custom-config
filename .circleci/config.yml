@@ -44,6 +44,8 @@ jobs:
       - set-continued-config:
           lookup-key: config
       - continuation/continue:
+          # NOTE: for CircleCI Server customers, please set circleci_domain
+          # See https://circleci.com/developer/orbs/orb/circleci/continuation#commands-continue
           configuration_path: .circleci/continue.yml
           parameters: /tmp/pipeline-parameters.json
 
