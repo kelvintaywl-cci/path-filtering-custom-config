@@ -22,13 +22,16 @@ commands:
       - run:
           name: Set next config as << parameters.configuration-path >>
           command: |
-            ln -s $(jq -r '.<< parameters.lookup-key >>' << parameters.pipeline-parameters-json-file >>) << parameters.configuration-path >>
+            cp $(jq -r '.<< parameters.lookup-key >>' << parameters.pipeline-parameters-json-file >>) << parameters.configuration-path >>
+
+            # debug: confirm next config
+            cat << parameters.configuration-path >>
       - run:
           name: Pop << parameters.lookup-key >> key from << parameters.pipeline-parameters-json-file >>
           command: |
             jq 'del(.<< parameters.lookup-key >>)' << parameters.pipeline-parameters-json-file >> > << parameters.pipeline-parameters-json-file >>
 
-            # confirm contents
+            # debug: confirm contents
             jq '.' << parameters.pipeline-parameters-json-file >>
 
 jobs:
