@@ -58,6 +58,7 @@ jobs:
           # NOTE: for CircleCI Server customers, please set circleci_domain
           # See https://circleci.com/developer/orbs/orb/circleci/continuation#commands-continue
           configuration_path: .circleci/continue.yml
+          # NOTE: this is the default output path of https://circleci.com/developer/orbs/orb/circleci/path-filtering#commands-set-parameters
           parameters: /tmp/pipeline-parameters.json
 
 workflows:
