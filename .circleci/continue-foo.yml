@@ -1,12 +1,17 @@
 version: 2.1
 
+parameters:
+  message:
+    type: string
+    default: ''
+
 jobs:
   foo:
     docker:
       - image: cimg/base:current
     resource_class: small
     steps:
-      - run: echo FOO
+      - run: echo << pipeline.parameters.message >>
 
 workflows:
   for-foo:

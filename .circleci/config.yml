@@ -45,7 +45,9 @@ jobs:
           base-revision: main
           mapping: |
             foo/.* config ".circleci/continue-foo.yml"
+            foo/.* message "this is FOO"
             bar/.* config ".circleci/continue-bar.yml"
+            bar/.* message "BAR none"
       - set-continued-config:
           lookup-key: config
       - continuation/continue:
