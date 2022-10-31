@@ -14,7 +14,7 @@ commands:
         default: /tmp/pipeline-parameters.json
       configuration-path:
         type: string
-        default: .circleci/config.yml
+        default: .circleci/continue.yml
       lookup-key:
         type: string
         description: key to look up the filepath for the next config
