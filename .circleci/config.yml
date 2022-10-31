@@ -29,7 +29,9 @@ commands:
       - run:
           name: Pop << parameters.lookup-key >> key from << parameters.pipeline-parameters-json-file >>
           command: |
-            jq 'del(.<< parameters.lookup-key >>)' << parameters.pipeline-parameters-json-file >> > << parameters.pipeline-parameters-json-file >>
+            jq 'del(.<< parameters.lookup-key >>)' << parameters.pipeline-parameters-json-file >> > params.json
+            rm << parameters.pipeline-parameters-json-file >>
+            cp params.json << parameters.pipeline-parameters-json-file >>
 
             # debug: confirm contents
             jq '.' << parameters.pipeline-parameters-json-file >>
