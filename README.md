@@ -4,6 +4,17 @@ Showcase how to run different continued config, with path-filtering.
 
 Please see the .circleci/config.yml file for details.
 
+@circle-makotom has a flexible solution with an Orb and a sample here:
+
+- Orb: https://github.com/circle-makotom-orbs/config-splitting
+- Sample: https://github.com/circle-makotom/circle-combine-split-config
+
+This is a simpler approach to get around the path-filtering Orb.
+Specifically, we want to continue using the `mapping` configuration from path-filtering, but allow for a specific contunued config.
+
+Please see https://github.com/kelvintaywl-cci/path-filtering-custom-config/pull/1 for a sample PR.
+
+
 ## Notes
 
 Path-filtering Orb (as of v0.1.3) is basic and allows us to create mappings like:
