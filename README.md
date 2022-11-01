@@ -1,6 +1,6 @@
 # path-filtering-custom-config
 
-Showcase how to run different continued config, with path-filtering.
+Showcase how to run different continued configs, with path-filtering.
 
 Please see the .circleci/config.yml file for details.
 
