@@ -22,6 +22,11 @@ commands:
       - run:
           name: Set next config as << parameters.configuration-path >>
           command: |
+            if [ -f << parameters.configuration-path >> ]; then
+              echo "<< parameters.configuration-path >> file already exists; using this as-is"
+              exit 0
+            fi
+
             cp $(jq -r '.<< parameters.lookup-key >>' << parameters.pipeline-parameters-json-file >>) << parameters.configuration-path >>
 
             # debug: confirm next config
