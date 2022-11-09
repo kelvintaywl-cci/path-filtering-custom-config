@@ -54,14 +54,10 @@ jobs:
           # - Each line can only have 3 items, separated by space
           # - No item in each line can have space in their value
           mapping: |
-            .* config ".circleci/no-op.yml"
-            (foo|bar)/.* config ".circleci/continue.yml"
             foo/.* run-for-foo true
             foo/.* foo-message "kungFOOfighting"
             bar/.* run-for-bar true
             bar/.* bar-message "BARnone"
-      - set-continued-config:
-          lookup-key: config
       - continuation/continue:
           # NOTE: for CircleCI Server customers, please set circleci_domain
           # See https://circleci.com/developer/orbs/orb/circleci/continuation#commands-continue
