@@ -7,6 +7,12 @@ parameters:
   bar-message:
     type: string
     default: ''
+  run-for-foo:
+    type: boolean
+    default: false
+  run-for-bar:
+    type: boolean
+    default: false
 
 jobs:
   foo:
@@ -24,8 +30,10 @@ jobs:
 
 workflows:
   for-foo:
+    when: << pipeline.parameters.run-for-foo >>
     jobs:
       - foo
   for-bar:
+    when: << pipeline.parameters.run-for-bar >>
     jobs:
       - bar

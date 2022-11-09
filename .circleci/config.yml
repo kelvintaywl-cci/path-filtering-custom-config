@@ -50,10 +50,11 @@ jobs:
           # - No item in each line can have space in their value
           mapping: |
             .* config ".circleci/no-op.yml"
-            foo/.* config ".circleci/continue-foo.yml"
-            foo/.* message "kungFOOfighting"
-            bar/.* config ".circleci/continue-bar.yml"
-            bar/.* message "BARnone"
+            (foo|bar)/.* config ".circleci/continue.yml"
+            foo/.* run-for-bar true
+            foo/.* foo-message "kungFOOfighting"
+            bar/.* run-for-bar true
+            bar/.* bar-message "BARnone"
       - set-continued-config:
           lookup-key: config
       - continuation/continue:
