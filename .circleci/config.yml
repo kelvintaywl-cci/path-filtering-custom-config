@@ -56,7 +56,7 @@ jobs:
           mapping: |
             .* config ".circleci/no-op.yml"
             (foo|bar)/.* config ".circleci/continue.yml"
-            foo/.* run-for-bar true
+            foo/.* run-for-foo true
             foo/.* foo-message "kungFOOfighting"
             bar/.* run-for-bar true
             bar/.* bar-message "BARnone"
