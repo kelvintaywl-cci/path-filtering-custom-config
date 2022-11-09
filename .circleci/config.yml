@@ -22,6 +22,11 @@ commands:
       - run:
           name: Set next config as << parameters.configuration-path >>
           command: |
+            if [ -f << parameters.configuration-path >> ]; then
+              echo "<< parameters.configuration-path >> file already exists; using this as-is"
+              exit 0
+            fi
+
             cp $(jq -r '.<< parameters.lookup-key >>' << parameters.pipeline-parameters-json-file >>) << parameters.configuration-path >>
 
             # debug: confirm next config
@@ -49,13 +54,10 @@ jobs:
           # - Each line can only have 3 items, separated by space
           # - No item in each line can have space in their value
           mapping: |
-            .* config ".circleci/no-op.yml"
-            foo/.* config ".circleci/continue-foo.yml"
-            foo/.* message "kungFOOfighting"
-            bar/.* config ".circleci/continue-bar.yml"
-            bar/.* message "BARnone"
-      - set-continued-config:
-          lookup-key: config
+            foo/.* run-for-foo true
+            foo/.* foo-message "kungFOOfighting"
+            bar/.* run-for-bar true
+            bar/.* bar-message "BARnone"
       - continuation/continue:
           # NOTE: for CircleCI Server customers, please set circleci_domain
           # See https://circleci.com/developer/orbs/orb/circleci/continuation#commands-continue

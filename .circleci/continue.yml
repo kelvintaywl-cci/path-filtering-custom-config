@@ -1,0 +1,39 @@
+version: 2.1
+
+parameters:
+  foo-message:
+    type: string
+    default: ''
+  bar-message:
+    type: string
+    default: ''
+  run-for-foo:
+    type: boolean
+    default: false
+  run-for-bar:
+    type: boolean
+    default: false
+
+jobs:
+  foo:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run: echo << pipeline.parameters.foo-message >>
+  bar:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run: echo << pipeline.parameters.bar-message >>
+
+workflows:
+  for-foo:
+    when: << pipeline.parameters.run-for-foo >>
+    jobs:
+      - foo
+  for-bar:
+    when: << pipeline.parameters.run-for-bar >>
+    jobs:
+      - bar
